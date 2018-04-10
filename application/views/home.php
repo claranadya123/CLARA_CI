@@ -74,7 +74,7 @@
 				      </tbody>
 				    </table>
 				</div>
-				<!--
+				
 				<div class="col-md-6">
 				    <h1>Biodata Saya dari object</h1>
 				    <table class="table">
