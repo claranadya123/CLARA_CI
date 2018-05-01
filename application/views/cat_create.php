@@ -7,14 +7,14 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-warning mb-4">
-      <a class="navbar-brand" href="#">Clara's</a>
+      <a class="navbar-brand" href="#">clara's</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="<?php echo base_url("index.php/Blog") ?>">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#">Contact<span class="sr-only">(current)</span></a>
@@ -34,24 +34,20 @@
       </div>
     </nav>
     <main role="main" class="container">
-      <a href="<?php echo base_url("index.php/Blog/add_view") ?>" class="btn btn-primary">Tambah Blog</a>
-   <ul class="list-unstyled">
-<ul class="list-unstyled">
-  <?php foreach ($records as $key => $value): ?>
-    <li class="media">
-   <img class="mr-3" src="<?php echo base_url() ?>uploads/<?php echo $value['image_file'] ?>" alt="Generic placeholder image" width="100px" height="150px">
-    <div class="media-body">
-    <h6 class="text-muted"><?php echo $value['date'] ?></h6>
-      <h5 class="mt-0 mb-1"><?php echo $value['title'] ?></h5>
-      <?php echo $value['content'] ?>
-      <br>
-      <a href="<?php echo base_url('index.php/Blog/byId/'.$value['id']) ?>">View Details</a>
-      <a class="btn btn-sm btn-success" href="<?php echo base_url('index.php/Blog/update_view/'.$value['id']) ?>">Update  </a>
-            <a class="btn btn-sm btn-danger" href="<?php echo base_url('index.php/Blog/delete_action/'.$value['id']) ?>">Delete </a>
-    </div>
-  </li>
-  <?php endforeach ?>
-</ul>
+ <?php echo form_open( 'category/create', array('class' => 'needs-validation', 'novalidate' => '') ); ?> 
+
+    <div class="form-group"> 
+   <label for="cat_name">Nama Kategori</label> 
+   <input type="text" class="form-control" name="cat_name" value="<?php echo set_value('cat_name') ?>" required> 
+   <div class="invalid-feedback">Isi judul dahulu</div> 
+    </div> 
+
+    <div class="form-group"> 
+   <label for="text">Deskripsi</label> 
+   <input type="text" class="form-control" name="cat_description" value="<?php echo set_value('cat_description') ?>" required> 
+   <div class="invalid-feedback">Isi deskripsi dahulu</div> 
+    </div> 
+    <button id="submitBtn" type="submit" class="btn btn-primary">Simpan</button> 
     </main>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

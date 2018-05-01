@@ -28,5 +28,6 @@ class Blog_model extends CI_Model {
       $query = $this->db->query("select * from blog where id='$id'");
  	  return $query->result_array();
      }
+     
 }
 ?>
