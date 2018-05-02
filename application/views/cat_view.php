@@ -51,13 +51,13 @@
             <td><?php echo $key['cat_description']; ?></td>
             <td><?php echo $key['date_created']; ?></td>
               <td>
-              <form action="<?php echo base_url('home/keEditKategori')?>" method="post">
+              <form action="<?php echo base_url('index.php/Home/keEditKategori')?>" method="post">
                 <input type="hidden" name= "edit" class="form-control" value="<?php echo $key['cat_id']; ?>">
                 <button class="btn btn-warning">Edit</button>
               </form>
               </td>
             <td>
-                <form action="<?php echo base_url('home/hapusKategori')?>" method="post">
+                <form action="<?php echo base_url('index.php/home/hapusKategori')?>" method="post">
                 <input type="hidden" name= "delete" class="form-control" value="<?php echo $key['cat_id']; ?>">
                 <input type="hidden" name= "cat_name" class="form-control" value="<?php echo $key['cat_name']; ?>">
                   <button class="btn btn-danger" onclick="return confirm('yakin akan menghapus kategori <?php echo $key['cat_name']?> ?')">Delete</button>

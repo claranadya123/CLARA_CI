@@ -18,6 +18,12 @@ class Category_model extends CI_Model
         return $query->result_array();
     }
 
+    public function getCategoryByID($idKat)
+    {
+        $query = $this->db->query("select * from categories where cat_id ='".$idKat."'");
+        return $query->result_array();
+    }
+
     public function create_category()
     {
         $data = array(
@@ -26,6 +32,20 @@ class Category_model extends CI_Model
         );
 
         return $this->db->insert('categories', $data);
+    }
+
+    public function edit($data, $id)
+    {
+        if(!empty($data) && !empty($id)){
+            $update = $this->db->update('categories', $data, array('cat_id' =>$id));
+        }else{
+            return false;
+        }
+    }
+
+    public function deleteCategory($cat_id, $cat_name)
+    {
+        $this->db->query("DELETE from categories where cat_id = ".$cat_id);
     }
     
 }
