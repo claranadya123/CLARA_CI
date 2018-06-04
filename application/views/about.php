@@ -22,6 +22,14 @@
           <li class="nav-item active">
             <a class="nav-link" href="#">Berita<span class="sr-only">(current)</span></a>
           </li>
+          
++      <li class="nav-item">
++        <a class="nav-link disabled" href="<?php echo base_url('Login') ?>">Login</a>
++      </li>
++      <li class="nav-item">
++        <a class="nav-link disabled" href="<?php echo base_url('SignUp') ?>">Daftar</a>
++      </li>
+
         </ul>
         
       </div>

@@ -1,4 +1,5 @@
 <?php echo form_open('user/login'); ?>
+    <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <h1 class="text-center"><?php echo $page_title; ?></h1>
@@ -10,5 +11,6 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block">Login</button>
         </div>
+    </div>
     </div>
 <?php echo form_close(); ?>
