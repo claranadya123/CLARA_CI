@@ -6,6 +6,14 @@ class Blog extends CI_Controller {
   
   
       public function add_view() {
+
+         if ($this->session->userdata('level')==0) {
+            $_SESSION=null;
+
+           // Set message
+           $this->session->set_flashdata('userTidakBerhak', 'Anda Tidak Berhak Menambah Data Blog Baru! Sesi Berakhir!');
+            redirect('user/login');
+         }
         $data['error'] = ""; 
       $this->load->helper(array('form', 'url'));
       $this->load->library('form_validation');
@@ -18,13 +26,13 @@ class Blog extends CI_Controller {
       }
       else
       {
-         $config['upload_path']   = './uploads/';  
-         $config['allowed_types'] = 'gif|jpg|png';  
-         $config['max_size']      = 80000;  
-         $config['max_width']     = 1024;  
-         $config['max_height']    = 768;   
-         $this->load->library('upload', $config); 
-         $this->upload->initialize($config); 
+         $config['upload_path']   = './uploads/';
+         $config['allowed_types'] = 'gif|jpg|png';
+         $config['max_size']      = 80000;
+         $config['max_width']     = 1024;
+         $config['max_height']    = 768;
+         $this->load->library('upload', $config);
+         $this->upload->initialize($config);
 
          if ( ! $this->upload->do_upload('image_file')) { 
             $error = array('error' => $this->upload->display_errors());  
@@ -130,6 +138,11 @@ class Blog extends CI_Controller {
       redirect('Blog');
    }
    public function pagination() {  
+      if(!isset($_SESSION['user_id']) AND !isset($_SESSION['level'])){
+         $this->session->set_flashdata('mustLogin', 'Anda Harus Login untuk mengakses Halaman Ini!');
+         redirect('user/login');
+
+      }
   $limit_per_page=10; 
   $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
   $total_records= $this->blog_model->get_total(); 

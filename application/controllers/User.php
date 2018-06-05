@@ -63,12 +63,14 @@ class User extends CI_Controller {
 
     // Login user
     $user_id = $this->User_model->login($username, $password);
+    $level = $this->User_model->getLevel($username, $password);
 
     if($user_id){
         // Buat session
         $user_data = array(
             'user_id' => $user_id,
             'username' => $username,
+            'level' => $level,
             'logged_in' => true
         );
         $this->session->set_userdata($user_data);
@@ -91,6 +93,7 @@ class User extends CI_Controller {
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('username');
+        $this->session->unset_userdata('level');
 
         // Set message
         $this->session->set_flashdata('user_loggedout');

@@ -56,7 +56,10 @@
          <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedout').'</p>'; ?>
        <?php endif; ?>
 
-       
+<?php if($this->session->flashdata('userTidakBerhak')): ?>
+         <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('userTidakBerhak').'</p>'; ?>
+       <?php endif; ?>
 
-
-
+       <?php if($this->session->flashdata('mustLogin')): ?>
+         <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('mustLogin').'</p>'; ?>
+       <?php endif; ?>
