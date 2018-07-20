@@ -27,6 +27,9 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url("index.php/Category") ?>">Category</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url("index.php/Level/") ?>">Level</a>
+          </li>
         </ul>
         <?php if(!$this->session->userdata('logged_in')) : ?>
 
